@@ -2,13 +2,13 @@ const express = require('express');
 const router = express.Router();
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken'); 
+const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
 
 // Load Input Validation
 const validateRegisterInput = require('../../validation/register');
-const validateLoginInput = require('../../validation/login');  
+const validateLoginInput = require('../../validation/login');
 
 // Load users Model
 const User = require('../../models/Users');
@@ -60,7 +60,7 @@ router.post('/register', (req, res) => {
                     })
                 })
             }
-        })    
+        })
 });
 
 // @route   GET api/users/login
@@ -77,7 +77,7 @@ router.post('/login', (req, res) => {
 
     const email = req.body.email;
     const password = req.body.password;
-    console.log(email);
+
     //FInd User By Email
     User.findOne({email})
         .then(user => {
@@ -93,7 +93,6 @@ router.post('/login', (req, res) => {
                     if(isMatch){
                         //res.json({msg: 'Success'});
                         // User Matched
-
                         const payload = {id: user.id, name: user.name, avatar: user.avatar}; // Create jwt payload
 
                         //Sign Token
