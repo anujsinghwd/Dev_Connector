@@ -7,6 +7,7 @@ const passport = require('passport');
 const validateProfileInput = require('../../validation/profile');
 const validateExperienceInput = require('../../validation/experience');
 const validateEducationInput = require('../../validation/education');
+const validateProjectInput = require('../../validation/project');
 
 // Load Profile Model
 const Profile = require('../../models/Profile');
@@ -208,8 +209,56 @@ router.post('/education', passport.authenticate('jwt', { session: false }), (req
         })
 });
 
+// @route   POST api/profile/project
+// @dsec    Add Projects to profile
+// @access  Private
+router.post('/project', passport.authenticate('jwt', { session: false }), (req, res) => {
+    const { errors, isValid } = validateProjectInput(req.body);
+
+    if(!isValid){
+        // Return any error with 400 status
+        return res.status(400).json(errors);
+    }
+    Profile.findOne({user: req.user.id})
+        .then(profile => {
+            const newProj = {
+                title: req.body.title,
+                from: req.body.from,
+                to: req.body.to,
+                current: req.body.current,
+                projectUrl: req.body.projectUrl,
+                description: req.body.description
+            }
+
+            // Add to experience array to profile
+            profile.project.unshift(newProj);
+            profile.save().then(profile => res.json(profile));
+        })
+});
+
+
+// @route   DELETE api/profile/project/:proj_id
+// @dsec    DELETE project from profile
+// @access  Private
+router.delete('/project/:proj_id', passport.authenticate('jwt', { session: false }), (req, res) => {
+    
+    Profile.findOne({user: req.user.id})
+        .then(profile => {
+            // Get Remove Index
+            const removeIndex = profile.project
+                                    .map(item => item.id)
+                                    .indexOf(req.params.proj_id);
+            
+            // Splice out of array
+            profile.project.splice(removeIndex, 1);
+
+            // Save
+            profile.save().then(profile => res.json(profile));
+        })
+});
+
 // @route   DELETE api/profile/experience/:exp_id
-// @dsec    DELETE experience to profile
+// @dsec    DELETE experience from profile
 // @access  Private
 router.delete('/experience/:exp_id', passport.authenticate('jwt', { session: false }), (req, res) => {
     

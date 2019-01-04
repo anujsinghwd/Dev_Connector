@@ -93,6 +93,31 @@ const ProfileSchema = new Schema({
             }
         }
     ],
+    project: [
+        {
+            title: {
+                type: String,
+                required: true
+            },
+            from: {
+                type: Date,
+                required: true
+            },
+            to: {
+                type: Date
+            },
+            current: {
+                type: Boolean,
+                default: false
+            },
+            projectUrl: {
+                type: String
+            },
+            description: {
+                type: String
+            }
+        }
+    ],
     social: {
         youtube: {
             type: String
