@@ -1,1 +1,2 @@
-export const TEST_DISPATCH = 'TEST DISPATCH';
+export const GET_ERRORS = 'GET ERRORS';
+export const SET_CURRENT_USER = 'SET CURRENT USER';
