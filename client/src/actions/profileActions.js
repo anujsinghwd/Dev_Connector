@@ -32,3 +32,15 @@ export const clearProfile = () => {
         type: CLEAR_CURRENT_PROFILE
     }
 }
+
+// Create Profile
+export const createProfile = (profileDate, history) => dispatch => {
+    axios.post('/api/profile', profileDate)
+        .then(res => history.push('/dashboard'))
+        .catch(err => 
+            dispatch({
+                type: GET_ERRORS,
+                payload: err.response.data
+            })
+        )
+}
