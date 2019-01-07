@@ -241,14 +241,14 @@ router.post('/project', passport.authenticate('jwt', { session: false }), (req, 
 // @dsec    DELETE project from profile
 // @access  Private
 router.delete('/project/:proj_id', passport.authenticate('jwt', { session: false }), (req, res) => {
-    
+
     Profile.findOne({user: req.user.id})
         .then(profile => {
             // Get Remove Index
             const removeIndex = profile.project
                                     .map(item => item.id)
                                     .indexOf(req.params.proj_id);
-            
+
             // Splice out of array
             profile.project.splice(removeIndex, 1);
 
@@ -261,14 +261,14 @@ router.delete('/project/:proj_id', passport.authenticate('jwt', { session: false
 // @dsec    DELETE experience from profile
 // @access  Private
 router.delete('/experience/:exp_id', passport.authenticate('jwt', { session: false }), (req, res) => {
-    
+
     Profile.findOne({user: req.user.id})
         .then(profile => {
             // Get Remove Index
             const removeIndex = profile.experience
                                     .map(item => item.id)
                                     .indexOf(req.params.exp_id);
-            
+
             // Splice out of array
             profile.experience.splice(removeIndex, 1);
 
@@ -281,14 +281,14 @@ router.delete('/experience/:exp_id', passport.authenticate('jwt', { session: fal
 // @dsec    DELETE education from profile
 // @access  Private
 router.delete('/education/:edu_id', passport.authenticate('jwt', { session: false }), (req, res) => {
-    
+
     Profile.findOne({user: req.user.id})
         .then(profile => {
             // Get Remove Index
             const removeIndex = profile.education
                                     .map(item => item.id)
                                     .indexOf(req.params.exp_id);
-            
+
             // Splice out of array
             profile.education.splice(removeIndex, 1);
 

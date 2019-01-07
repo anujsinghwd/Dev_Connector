@@ -7,12 +7,13 @@ import Spinner from '../common/Spinner';
 import  ProfileActions  from "./ProfileActions";
 import Experience from './Experience';
 import Education from './Education';
+import Work from './Work';
 
 class Dashboard extends Component {
-    
+
   componentDidMount(){
       this.props.getCurrentProfile();
-  }    
+  }
 
   onDeleteClick(e){
     this.props.deleteAccount();
@@ -36,6 +37,7 @@ class Dashboard extends Component {
             <ProfileActions />
             <Experience experience={profile.experience} />
             <Education education={profile.education} />
+            <Work projects={profile.project} />
             <div style={{ marginBottom: '60px' }} />
             <button onClick={this.onDeleteClick.bind(this)} className="btn btn-danger">Delete My Account</button>
           </div>
@@ -61,7 +63,7 @@ class Dashboard extends Component {
           <div className="col-md-12">
             <h1 className="display-4"></h1>
              { dashboardContent }
-            </div>          
+            </div>
           </div>
         </div>
       </div>

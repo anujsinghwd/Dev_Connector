@@ -37,7 +37,7 @@ export const clearProfile = () => {
 export const createProfile = (profileDate, history) => dispatch => {
     axios.post('/api/profile', profileDate)
         .then(res => history.push('/dashboard'))
-        .catch(err => 
+        .catch(err =>
             dispatch({
                 type: GET_ERRORS,
                 payload: err.response.data
@@ -49,13 +49,13 @@ export const createProfile = (profileDate, history) => dispatch => {
 export const deleteAccount = () => dispatch => {
     if(window.confirm('Are You sure this can not be undone')){
         axios.delete('/api/profile')
-            .then(res => 
+            .then(res =>
                 dispatch({
                     type: SET_CURRENT_USER,
                     payload: {}
                 })
             )
-            .catch(err => 
+            .catch(err =>
                 dispatch({
                     type: GET_ERRORS,
                     payload: err.response.data
@@ -68,7 +68,7 @@ export const deleteAccount = () => dispatch => {
 export const addExperience = (expData, history) => dispatch => {
     axios.post('api/profile/experience', expData)
         .then(res => history.push('/dashboard'))
-        .catch(err => 
+        .catch(err =>
             dispatch({
                 type: GET_ERRORS,
                 payload: err.response.data
@@ -80,7 +80,7 @@ export const addExperience = (expData, history) => dispatch => {
 export const addEducation = (eduData, history) => dispatch => {
     axios.post('api/profile/education', eduData)
         .then(res => history.push('/dashboard'))
-        .catch(err => 
+        .catch(err =>
             dispatch({
                 type: GET_ERRORS,
                 payload: err.response.data
@@ -88,16 +88,45 @@ export const addEducation = (eduData, history) => dispatch => {
         )
 }
 
-// Delete An Experience
-export const deleteExperience = (id) => dispatch => {
-    axios.delete(`/api/profile/experience/${id}`)
-        .then(res=> 
+// Add Work Of Developer
+export const addWork = (workData, history) => dispatch => {
+    axios.post('api/profile/project', workData)
+        .then(res => history.push('/dashboard'))
+        .catch(err =>
+            dispatch({
+                type: GET_ERRORS,
+                payload: err.response.data
+            })
+        )
+}
+
+export const deleteWork = (id) => dispatch => {
+    axios.delete(`/api/profile/project/${id}`)
+        .then(res=>
             dispatch({
                 type: GET_PROFILE,
                 payload: res.data
             })
         )
-        .catch(err => 
+        .catch(err =>
+            dispatch({
+                type: GET_ERRORS,
+                payload: err.response.data
+            })
+        )
+
+}
+
+// Delete An Experience
+export const deleteExperience = (id) => dispatch => {
+    axios.delete(`/api/profile/experience/${id}`)
+        .then(res=>
+            dispatch({
+                type: GET_PROFILE,
+                payload: res.data
+            })
+        )
+        .catch(err =>
             dispatch({
                 type: GET_ERRORS,
                 payload: err.response.data
@@ -109,13 +138,13 @@ export const deleteExperience = (id) => dispatch => {
 // Delete An Education
 export const deleteEducation = (id) => dispatch => {
     axios.delete(`/api/profile/education/${id}`)
-        .then(res=> 
+        .then(res=>
             dispatch({
                 type: GET_PROFILE,
                 payload: res.data
             })
         )
-        .catch(err => 
+        .catch(err =>
             dispatch({
                 type: GET_ERRORS,
                 payload: err.response.data

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { Link ,withRouter } from 'react-router-dom';
 import TextFieldGroup from '../common/TextFieldGroup';
-import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
 import InputGroup from '../common/InputGroup';
 import SelectListGroup from '../common/SelectListGroup';
 import { createProfile, getCurrentProfile } from '../../actions/profileActions';
@@ -28,7 +27,7 @@ class EditProfile extends Component {
            linkedin: '',
            instagram: '',
            youtube: '',
-           errors: {} 
+           errors: {}
       }
       this.onChange = this.onChange.bind(this);
       this.onSubmit = this.onSubmit.bind(this);
@@ -49,10 +48,10 @@ class EditProfile extends Component {
 
       if(nextProps.profile.profile){
            const profile = nextProps.profile.profile;
-           
+
            // bring Skills array back to comma separated values
            const skillsCSV = profile.skills.join(',');
-           
+
            // If profile field doesn't exixts add or make empty string
            profile.company = !isEmpty(profile.company) ? profile.company : '';
            profile.website = !isEmpty(profile.website) ? profile.website : '';
@@ -121,7 +120,7 @@ class EditProfile extends Component {
     if(displaySocialInput){
         socialInputs = (
             <div className="">
-                <InputGroup 
+                <InputGroup
                     placeholder="twiiter profile URL"
                     name="twitter"
                     icon="fab fa-twitter"
@@ -130,7 +129,7 @@ class EditProfile extends Component {
                     error={errors.twitter}
                 />
 
-                <InputGroup 
+                <InputGroup
                     placeholder="facebook profile URL"
                     name="facebook"
                     icon="fab fa-facebook"
@@ -139,7 +138,7 @@ class EditProfile extends Component {
                     error={errors.facebook}
                 />
 
-                <InputGroup 
+                <InputGroup
                     placeholder="youtube profile URL"
                     name="youtube"
                     icon="fab fa-youtube"
@@ -148,7 +147,7 @@ class EditProfile extends Component {
                     error={errors.youtube}
                 />
 
-                <InputGroup 
+                <InputGroup
                     placeholder="linkedin profile URL"
                     name="linkedin"
                     icon="fab fa-linkedin"
@@ -157,7 +156,7 @@ class EditProfile extends Component {
                     error={errors.linkedin}
                 />
 
-                <InputGroup 
+                <InputGroup
                     placeholder="instagram profile URL"
                     name="instagram"
                     icon="fab fa-instagram"
@@ -206,10 +205,13 @@ class EditProfile extends Component {
         <div className="container">
             <div className="row">
                 <div className="col-md-8 m-auto">
+                    <Link to="/dashboard" className="btn btn-light">
+                      Go Back
+                    </Link>
                     <h1 className="display-4 text-center">Edit Profile</h1>
                     <small className="d-block pd-3">* required fields</small>
                     <form onSubmit={this.onSubmit}>
-                        <TextFieldGroup 
+                        <TextFieldGroup
                             placeholder="* Profile handle"
                             name="handle"
                             value={this.state.handle}
@@ -218,7 +220,7 @@ class EditProfile extends Component {
                             info="A unique handle for your profile URL, Your full name , company name , nickname, etc(This CAN'T be changed later)"
                         />
 
-                        <SelectListGroup 
+                        <SelectListGroup
                             placeholder = "Status"
                             name = "status"
                             value = {this.state.status}
@@ -228,7 +230,7 @@ class EditProfile extends Component {
                             info="Give us an idea of where you are at in oyur carrier"
                         />
 
-                        <TextFieldGroup 
+                        <TextFieldGroup
                             placeholder="Company"
                             name="company"
                             value={this.state.company}
@@ -237,7 +239,7 @@ class EditProfile extends Component {
                             info="Could be your company or where you work"
                         />
 
-                        <TextFieldGroup 
+                        <TextFieldGroup
                             placeholder="Website"
                             name="website"
                             value={this.state.website}
@@ -246,7 +248,7 @@ class EditProfile extends Component {
                             info="Could be your website or company one"
                         />
 
-                        <TextFieldGroup 
+                        <TextFieldGroup
                             placeholder="Location"
                             name="location"
                             value={this.state.location}
@@ -255,7 +257,7 @@ class EditProfile extends Component {
                             info="City or city & state suggested (eg. Delhi, UP)"
                         />
 
-                        <TextFieldGroup 
+                        <TextFieldGroup
                             placeholder="Skills"
                             name="skills"
                             value={this.state.skills}
@@ -264,7 +266,7 @@ class EditProfile extends Component {
                             info="Please use comma seperated values (eg. HTML,CSS,PHP)"
                         />
 
-                        <TextFieldGroup 
+                        <TextFieldGroup
                             placeholder="Github Username"
                             name="githubusername"
                             value={this.state.githubusername}
@@ -273,7 +275,7 @@ class EditProfile extends Component {
                             info="If you want your latest repos and a Github link , include your username"
                         />
 
-                        <TextFieldGroup 
+                        <TextFieldGroup
                             placeholder="Short bio"
                             name="bio"
                             value={this.state.bio}
@@ -289,7 +291,7 @@ class EditProfile extends Component {
                             <span className="text-muted">Optional</span>
                         </div>
                           {socialInputs}
-                          <input type="submit" value="submit" className="btn btn-info btn-block mt-4" />      
+                          <input type="submit" value="submit" className="btn btn-info btn-block mt-4" />
                     </form>
                 </div>
             </div>

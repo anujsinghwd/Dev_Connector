@@ -21,20 +21,22 @@ import CreateProfile from './components/create-profile/CreateProfile';
 import EditProfile from './components/edit-profile/EditProfile';
 import AddExperience from './components/add-credentials/AddExperience';
 import AddEducation from './components/add-credentials/AddEducation';
+import AddWork from './components/add-credentials/AddWork';
+
 
 // Check for tokens
 if(localStorage.jwtToken){
   // Set uth Token header auth
   setAuthToken(localStorage.jwtToken);
   // Decode Token gef user info from token
-   const decoded = jwt_decode(localStorage.jwtToken);  
+   const decoded = jwt_decode(localStorage.jwtToken);
    // Set User and isAuthenticated
    store.dispatch(setCurrentUser(decoded));
 
    // Check for expired token
    const currentTime = Date.now()/1000;
    if(decoded.exp < currentTime){
-      store.dispatch(logoutUser()); 
+      store.dispatch(logoutUser());
       // clear current profile
       store.dispatch(clearProfile());
       // Redirect to login
@@ -60,6 +62,7 @@ class App extends Component {
                 <PrivateRoute exact path="/edit-profile" component={EditProfile} />
                 <PrivateRoute exact path="/add-experience" component={AddExperience} />
                 <PrivateRoute exact path="/add-education" component={AddEducation} />
+                <PrivateRoute exact path="/add-work" component={AddWork} />
               </Switch>
           </div>
           <Footer />
