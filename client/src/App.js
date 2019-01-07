@@ -27,7 +27,7 @@ import Profiles from './components/profiles/Profiles';
 import NotFound from './components/not-found/NotFound';
 import Post from './components/post/Post';
 import Posts from './components/posts/Posts';
-
+import AllPosts from './components/posts/AllPosts';
 
 // Check for tokens
 if(localStorage.jwtToken){
@@ -63,6 +63,7 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/profiles" component={Profiles} />
             <Route exact path="/profile/:handle" component={Profile} />
+            <Route exact path="/posts" component={AllPosts} />
             <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
                 <PrivateRoute exact path="/create-profile" component={CreateProfile} />

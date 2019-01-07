@@ -1,4 +1,5 @@
-module.exports = {
-    mongoURI: 'mongodb://dev_connect:sumanuj11@ds145484.mlab.com:45484/dev-connect',
-    secretOrKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+if(process.env.NODE_ENV === 'production' ) {
+    module.exports= require('./keys_prod');
+} else {
+    module.exports= require('./keys_dev');
 }

@@ -26,6 +26,9 @@ class Navbar extends Component {
                 <li className="nav-item">
                     <Link className="nav-link" to="/dashboard">Dashboard</Link>
                 </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to="/posts">Posts</Link>
+                </li>
                 <li className="nav-item" style={{display: 'inline-flex'}}>
                     <img
                         className="rounded-circle"
@@ -71,6 +74,12 @@ class Navbar extends Component {
                                     <Link className="nav-link" to="/profiles">
                                         {''}
                                         Developers
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/posts">
+                                        {''}
+                                        Posts
                                     </Link>
                                 </li>
                             </ul>
