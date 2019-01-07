@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom'; 
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { registerUser } from "../../actions/authActions";
 import TextFieldGroup from '../common/TextFieldGroup';
@@ -46,7 +46,7 @@ class Register extends Component {
         password2: this.state.password2
     };
 
-    this.props.registerUser(newUser, this.props.history);  
+    this.props.registerUser(newUser, this.props.history);
   }
 
   render() {
@@ -61,7 +61,7 @@ class Register extends Component {
                 <h1 className="display-4 text-center">Sign Up</h1>
                 <p className="lead text-center">Create your DevConnector account</p>
                 <form onSubmit={this.onSubmit}>
-                <TextFieldGroup 
+                <TextFieldGroup
                     placeholder="Name"
                     name="name"
                     type="text"
@@ -70,7 +70,7 @@ class Register extends Component {
                     error={errors.name}
                   />
 
-                  <TextFieldGroup 
+                  <TextFieldGroup
                     placeholder="Email Address"
                     name="email"
                     type="email"
@@ -80,7 +80,7 @@ class Register extends Component {
                     info="This site uses Gravatar so if you want a profile image, use a Gravatar email"
                   />
 
-                  <TextFieldGroup 
+                  <TextFieldGroup
                     placeholder="Password"
                     name="password"
                     type="password"
@@ -89,7 +89,7 @@ class Register extends Component {
                     error={errors.password}
                   />
 
-                  <TextFieldGroup 
+                  <TextFieldGroup
                     placeholder="Confirm Password"
                     name="password2"
                     type="password"
@@ -97,8 +97,8 @@ class Register extends Component {
                     onChange={this.onChange}
                     error={errors.password2}
                   />
-                  
-                  <input type="submit" className="btn btn-info btn-block mt-4" />
+
+                  <input type="submit" value="Register" className="btn btn-info btn-block mt-4" />
                 </form>
               </div>
             </div>

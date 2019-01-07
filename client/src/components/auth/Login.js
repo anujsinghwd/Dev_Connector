@@ -31,7 +31,7 @@ class Login extends Component {
   componentWillReceiveProps(nextProps){
 
     if(nextProps.auth.isAuthenticated){
-      this.props.history.push('/dashboard'); 
+      this.props.history.push('/dashboard');
     }
 
     if(nextProps.errors){
@@ -62,7 +62,7 @@ class Login extends Component {
                 <h1 className="display-4 text-center">Log In</h1>
                 <p className="lead text-center">Sign in to your DevConnector account</p>
                 <form onSubmit={this.onSubmit} >
-                  <TextFieldGroup 
+                  <TextFieldGroup
                     placeholder="Email Address"
                     name="email"
                     type="email"
@@ -70,7 +70,7 @@ class Login extends Component {
                     onChange={this.onChange}
                     error={errors.email}
                   />
-                  <TextFieldGroup 
+                  <TextFieldGroup
                     placeholder="Password"
                     name="password"
                     type="password"
@@ -78,10 +78,11 @@ class Login extends Component {
                     onChange={this.onChange}
                     error={errors.password}
                   />
-                  
-                  <input 
-                    type="submit" 
-                    className="btn btn-info btn-block mt-4" 
+
+                  <input
+                    type="submit"
+                    value="Login"
+                    className="btn btn-info btn-block mt-4"
                   />
                 </form>
               </div>
