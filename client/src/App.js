@@ -26,6 +26,7 @@ import Profile from './components/profile/Profile';
 import Profiles from './components/profiles/Profiles';
 import NotFound from './components/not-found/NotFound';
 import Post from './components/post/Post';
+import Posts from './components/posts/Posts';
 
 
 // Check for tokens
@@ -70,6 +71,7 @@ class App extends Component {
                 <PrivateRoute exact path="/add-education" component={AddEducation} />
                 <PrivateRoute exact path="/add-work" component={AddWork} />
                 <PrivateRoute exact path="/post/:id" component={Post} />
+                <PrivateRoute exact path="/feed" component={Posts} />
               </Switch>
               <Route exact path="/not-found" component={NotFound} />
           </div>
