@@ -21,24 +21,25 @@ class Navbar extends Component {
                 <li className="nav-item">
                     <Link className="nav-link" to="/dashboard">Dashboard</Link>
                 </li>
-                <li className="nav-item">
-                    <a 
-                        style={{ width: '25px',marginRight: '5px' }} 
-                        herf="" onClick={this.onLogoutClick.bind(this)} 
+                <li className="nav-item" style={{display: 'inline-flex'}}>
+                    <img
+                        className="rounded-circle"
+                        src={user.avatar}
+                        alt={user.name}
+                        title="You must have a gravatar connected to your email to display your image"
+                        style={{width: '22px', height: '22px', marginTop: '8px'}}
+                    />
+                    <a
+                        style={{ width: '25px',marginRight: '5px' }}
+                        herf="" onClick={this.onLogoutClick.bind(this)}
                         className="nav-link"
                     >
-                        <img 
-                            className="rounded-circle" 
-                            src={user.avatar} 
-                            alt={user.name} 
-                            title="You must have a gravatar connected to your email to display your image" 
-                        />
-                        Logout
+                      Logout
                     </a>
                 </li>
             </ul>
         );
-        
+
         const guestLinks = (
             <ul className="navbar-nav ml-auto">
             <li className="nav-item">
@@ -62,10 +63,10 @@ class Navbar extends Component {
                         <div className="collapse navbar-collapse" id="mobile-nav">
                             <ul className="navbar-nav mr-auto">
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/profiles"> 
+                                    <Link className="nav-link" to="/profiles">
                                         {''}
                                         Developers
-                                    </Link>  
+                                    </Link>
                                 </li>
                             </ul>
                             { isAuthenticated ? authLinks : guestLinks }
@@ -80,10 +81,10 @@ class Navbar extends Component {
  Navbar.proptypes = {
      logoutUser: PropTypes.func.isRequired,
      auth: PropTypes.object.isRequired
- } 
+ }
 
 const mapStateToProps = (state) => ({
     auth: state.auth
 });
- 
+
 export default connect(mapStateToProps, { logoutUser, clearProfile })(Navbar);
