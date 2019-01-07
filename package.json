@@ -8,9 +8,7 @@
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server \" \"npm run client\"",
-    "heroku-postBuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
-    "build:staging": "env-cmd .env.staging npm run build"
+    "dev": "concurrently \"npm run server \" \"npm run client\""
   },
   "author": "anuj singh",
   "license": "MIT",
