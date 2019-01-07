@@ -30,7 +30,7 @@ class Navbar extends Component {
                         style={{width: '22px', height: '22px', marginTop: '8px'}}
                     />
                     <a
-                        style={{ width: '25px',marginRight: '5px' }}
+                        style={{ width: '25px',marginRight: '5px', cursor:'pointer' }}
                         herf="" onClick={this.onLogoutClick.bind(this)}
                         className="nav-link"
                     >

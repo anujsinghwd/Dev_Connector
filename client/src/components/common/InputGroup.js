@@ -23,8 +23,8 @@ const InputGroup = ({
             'is-invalid': error
             })}
             placeholder= {placeholder}
-            name= {name} 
-            value={value} 
+            name= {name}
+            value={value}
             onChange={onChange}
         />
         { error && (<div className="invalid-feedback">{error}</div>) }
